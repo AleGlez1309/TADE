@@ -1,0 +1,19 @@
+library IEEE;
+	use IEEE.std_logic_1164.all;
+entity exMUX is
+	port(
+		A,B,C,D,S0,S1 : in std_logic; -- Entradas
+		C: out std_logic -- Salida
+	);
+end exMUX;
+
+architecture archAnd of exMUX is
+	signal V,X,Y,Z std_logic := ‘0’;
+begin
+	V <= D AND S0 AND S1;
+	X <= C AND NOT S0 AND S1;
+	Y <= B AND S0 AND NOT S1;
+	Z <= A AND NOT S0 AND NOT S1;
+	
+	C <= V OR X OR Y OR Z;
+end architecture archAnd;
